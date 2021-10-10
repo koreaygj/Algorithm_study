@@ -24,7 +24,10 @@ bool solution(vector<string> phone_book)
           break;
         }
       }
+<<<<<<< HEAD
+=======
       cout << answer << " ";
+>>>>>>> bce537f0ff0952591dd21e19c7ba62bc681517ae
       if (answer == false)
       {
         break;
