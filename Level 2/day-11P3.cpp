@@ -12,7 +12,7 @@ bool solution(vector<string> phone_book)
   {
     for (int k = i + 1; k < phone_book.size(); k++)
     {
-      for (int j = 0; j < phone_book[i].size(); j++)
+      for (int j = 0; j < phone_book[0].size(); j++)
       {
         if (phone_book[i].at(j) == phone_book[k].at(j))
         {
@@ -24,16 +24,9 @@ bool solution(vector<string> phone_book)
           break;
         }
       }
-<<<<<<< HEAD
-=======
-      cout << answer << " ";
->>>>>>> bce537f0ff0952591dd21e19c7ba62bc681517ae
-      if (answer == false)
-      {
-        break;
-      }
+      break;
     }
-    if (answer == false)
+    if (answer = false)
       break;
   }
   return answer;
