@@ -25,13 +25,7 @@ int solution(int x, int y)
       j--;
     }
     count++;
-    // cout << move << " " << point << " " << j;
-    // string n;
-    // cin >> n;
-    // if (n == "q")
-    //   break;
   }
-  cout << "\n";
   count += j;
   return count;
 }
