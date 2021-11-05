@@ -1,24 +1,32 @@
 #include <iostream>
-#include <math.h>
+#include <vector>
 using namespace std;
 int main(void)
 {
-  int n, count, num = 0;
-  long int size = 0;
+  cin.tie(NULL);
+  cout.tie(NULL);
+  ios_base::sync_with_stdio(false);
+  int n;
+  int ans[10001] = {0};
   cin >> n;
   for (int i = 0; i < n; i++)
   {
     int a;
     cin >> a;
-    size += pow(10, a);
+    ans[a]++;
   }
-  while (size != 0)
+  for (int j = 1; j < 10001; j++)
   {
-    num += 1;
-    count = size % 10;
-    for (int i = 0; i < count; i++)
-      cout << num << "\n";
-    size /= 10;
+    if (ans[j] != 0 && n != 0)
+    {
+      for (int k = 0; k < ans[j]; k++)
+      {
+        cout << j << " ";
+        n--;
+      }
+    }
+    if (n == 0)
+      break;
   }
   return 0;
 }
