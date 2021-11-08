@@ -6,6 +6,8 @@
     "initializer_list": "cpp",
     "type_traits": "cpp",
     "xutility": "cpp",
-    "cmath": "cpp"
+    "cmath": "cpp",
+    "deque": "cpp",
+    "string": "cpp"
   }
 }
