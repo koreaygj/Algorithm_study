@@ -13,7 +13,8 @@ public class bj10950 {
     for (int i = 1; i <= t; i++) {
       String str = bf.readLine();
       String input[] = str.split(" ");
-      bw.write("Case #" + i + ": " + (Integer.parseInt(input[0]) + Integer.parseInt(input[1])) + "\n");
+      bw.write("Case #" + i + ": " + Integer.parseInt(input[0]) + " + " + Integer.parseInt(input[1]) + " = "
+          + (Integer.parseInt(input[0]) + Integer.parseInt(input[1])) + "\n");
     }
     bw.flush();
     bw.close();
