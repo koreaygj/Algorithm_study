@@ -61,4 +61,5 @@ int main(void)
   solution(0, 0);
   sort(ans.begin(), ans.end());
   cout << ans[0] << "\n";
-  return
+  return 0;
+}
