@@ -9,31 +9,32 @@ public:
   int one;
 };
 vector<sol> memo(100, {0, 0, 0});
-sol fibonacci(int n)
+void fibonacci(int n)
 {
   if (n == 0)
   {
+    memo[n].count = 0;
     memo[n].zero = 1;
-    return memo[n];
+    return;
   }
   else if (n == 1)
   {
+    memo[n].count = 1;
     memo[n].one = 1;
-    return memo[n];
+    return;
   }
   else if (memo[n].count != 0)
   {
-    return memo[n];
+    return;
   }
   else
   {
-    sol a, b;
-    a = fibonacci(n - 1);
-    b = fibonacci(n - 2);
-    memo[n].count = a.count + b.count;
-    memo[n].zero = a.zero + b.zero;
-    memo[n].one = a.one + b.one;
-    return memo[n];
+    fibonacci(n - 1);
+    fibonacci(n - 2);
+    memo[n].count = memo[n - 1].count + memo[n - 2].count;
+    memo[n].zero = memo[n - 1].zero + memo[n - 2].zero;
+    memo[n].one = memo[n - 1].one + memo[n - 2].one;
+    return;
   }
 }
 int main(void)
