@@ -2,38 +2,24 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-vector<int> drink(10001, 0);
-int solution(int n, int a)
-{
- int answer = 0;
- int a = 0;
- int index = 0;
- for (int i = 0; i < a; i++)
- {
-  switch (index)
-  {
-  case 0:
-  case 1:
-  case 2:
-  }
- }
- return answer;
-}
 int main(void)
 {
- int n, ans = 0;
+ int n;
+ vector<int> drink(10001, 0);
+ vector<int> dp(10001, 0);
  cin >> n;
  int a = n / 3;
- for (int i = 0; i < n; i++)
+ for (int i = 1; i <= n; i++)
  {
   cin >> drink[i];
-  ans += drink[i];
  }
- if (n == 1)
-  cout << drink[0] << "\n";
- if (n == 2)
-  cout << drink[0] + drink[1] << "\n";
- if (n >= 3)
-  cout << solution(n, a) << "\n";
+ dp[1] = drink[1];
+ dp[2] = drink[1] + drink[2];
+ dp[3] = max(drink[2] + drink[3], max(drink[1] + drink[2], drink[1] + drink[3]));
+ for (int i = 4; i <= n + 1; i++)
+ {
+  dp[i] = max(dp[i - 1], max(drink[i] + drink[i - 1] + dp[i - 3], drink[i] + dp[i - 2]));
+ }
+ cout << max(dp[n], dp[n + 1]) << "\n";
  return 0;
 }
