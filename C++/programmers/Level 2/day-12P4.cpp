@@ -18,7 +18,7 @@ int solution(vector<int> priorities, int location)
         priorities.push_back(priorities[i]);
         if (i == location)
           location = priorities.size() - 1;
-        //cout << location << endl;
+        // cout << location << endl;
         flag = true;
         break;
       }
