@@ -1,8 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <queue>
 using namespace std;
-int n, m, move_count;
+int n, m, move_count, layer;
 vector<vector<int>> maze(101, vector<int>(101, 0));
 vector<vector<int>> memo(101, vector<int>(101, 0));
 vector<int> result;
@@ -12,33 +13,50 @@ class point
     int x;
     int y;
 };
-vector<point> path;
 void solution(int x, int y)
 {
-    path.push_back({x, y});
-    move_count++;
-    if(x == n-1 && y == m-1)
-    {
-        result.push_back(move_count);
-    }
-    cout << x << " " << y << " " << move_count << endl;
+    queue<point> path;
+    path.push({x, y});
+    memo[x][y] = 0;
     vector<point> cardinal_point = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
-    memo[x][y] = 1;
-    for(int i = 0; i < 4; i++)
+    vector<int> deep(100, 0);
+    deep[0] = 1;
+    while(!path.empty())
     {
-        int n_x, n_y;
-        n_x = x + cardinal_point[i].x;
-        n_y = y + cardinal_point[i].y;
-        if(n_x < 0 || n_y < 0 || n_x > n || n_y > m)
-            continue;
-        if(maze[n_x][n_y] == 1 && memo[n_x][n_y] == 0)
+        int init_x, init_y;
+        init_x = path.front().x;
+        init_y = path.front().y;
+        cout << move_count << " " << init_x << "," << init_y << ": ";
+        for(int i = 0; i < 15; i++)
+            cout << deep[i] << " ";
+        cout << endl;
+        if(deep[move_count] == 0)
         {
-            solution(n_x, n_y);
+            move_count++;
+            layer++;
+        }
+        deep[layer]--;
+        path.pop();
+        for(int i = 0; i < 4; i++)
+        {
+            int n_x, n_y;
+            n_x = init_x + cardinal_point[i].x;
+            n_y = init_y + cardinal_point[i].y;
+            if(n_x < 0 || n_y < 0 || n_x > n - 1 || n_y > m -1)
+                continue;
+            if(maze[n_x][n_y] == 1 && memo[n_x][n_y] == 0)
+            {
+                deep[layer+1]++;
+                path.push({n_x, n_y});
+                memo[n_x, n_y] = 1;
+                if(n_x == n-1 && n_y == m-1)
+                {
+                    move_count++;
+                    return;
+                }
+            }
         }
     }
-    move_count--;
-    path.pop_back();
-    return;
 }
 int main(void)
 {
@@ -53,5 +71,5 @@ int main(void)
         }
     }
     solution(0, 0);
-    cout << result[min_element(result.begin(), result.end()) - result.begin()] << "\n";
+    cout << move_count + 1 << "\n";
 }
