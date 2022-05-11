@@ -7,15 +7,17 @@ int n;
 int answer;
 vector<vector<int>> graph(1005, vector<int>(1005, 0));
 vector<vector<int>> visit(1005, vector<int>(1005, 0));
-void dfs(int y)
+void bfs(int y)
 {
-    for(int i = 1; i <= n; i++)
+    queue<int> node;
+    node.push(y);
+    while(!node.empty())
     {
-        if(graph[y][i] == 1 && visit[y][i] == 0 && visit[i][y] == 0)
+        int st_y = node.fornt();
+        node.pop();
+        for(int i = 1; i <= n; i++)
         {
-            visit[y][i] = 1;
-            visit[i][y] = 1;
-            dfs(i);
+            if(graph[i][])
         }
     }
     return;
@@ -37,7 +39,7 @@ int solution()
                 answer++;
                 visit[i][j] = 1;
                 visit[j][i] = 1;
-                dfs(j);
+                bfs(j);
             }
         }
     }
