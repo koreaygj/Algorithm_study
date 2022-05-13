@@ -13,11 +13,15 @@ void bfs(int y)
     node.push(y);
     while(!node.empty())
     {
-        int st_y = node.fornt();
+        int st_y = node.front();
         node.pop();
         for(int i = 1; i <= n; i++)
         {
-            if(graph[i][])
+            if(graph[st_y][i] == 1 && visit[st_y][i] == 0)
+            {
+                visit[st_y][i] = 1;
+                node.push(i);
+            }
         }
     }
     return;
@@ -34,11 +38,11 @@ int solution()
         }
         for(int j = 1; j <= n; j++)
         {
-            if(graph[i][j] == 1 && visit[i][j] == 0 && visit[j][i] == 0)
+            if(graph[i][j] == 1 && visit[i][j] == 0)
             {
+                cout << i << " , " << j << " " << answer << endl;
                 answer++;
                 visit[i][j] = 1;
-                visit[j][i] = 1;
                 bfs(j);
             }
         }
