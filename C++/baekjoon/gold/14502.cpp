@@ -38,7 +38,7 @@ void bfs(int x,int y, vector<vector<int>> visit)
         {
             int n_x = i_x + cardinal[i].x;
             int n_y = i_y + cardinal[i].y;
-            if(n_x < 0 || n_y < 0 || n_x > n || n_y > m || simul[n_x][n_y] == 1)
+            if(n_x < 0 || n_y < 0 || n_x >= n || n_y >= m || simul[n_x][n_y] == 1)
                 continue;
             if(simul[n_x][n_y] == 0 && visit[n_x][n_y] == 0)
             {
@@ -64,7 +64,7 @@ void solution()
     }
     for(int i = 0;i < n; i++)
     {
-        for(int j = 0; j < n; j++)
+        for(int j = 0; j < m; j++)
         {
             if(simul[i][j] == 0)
                 ans++;
@@ -72,8 +72,7 @@ void solution()
     }
     if(answer < ans)
     {
-        cout << ans << endl;
-        print(lab);
+        print(simul);
         answer = ans;
     }
     return;
