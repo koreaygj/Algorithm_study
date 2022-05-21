@@ -12,18 +12,6 @@ vector<vector<int>> visit(25, vector<int>(25, 0));
 vector<int> alphabet(26, 0);
 int r, c;
 int answer, cnt;
-// void print()
-// {
-//     for(int i = 0; i < r; i++)
-//     {
-//         for(int j = 0; j < c ;j++)
-//             cout << memo[i][j] << " ";
-//         cout << endl;
-//     }
-//     for(int i = 0; i < 26; i++)
-//         cout <<alphabet[i] << " ";
-//     cout <<endl;
-// }
 void dfs(int y, int x)
 {
     vector<point> cardinal = {{-1, 0}, {0, -1}, {1, 0}, {0, 1}};
@@ -60,5 +48,4 @@ int main(void){
     dfs(0, 0);
     int cnt = 0;
     cout << answer << endl;
-    //cout << answer[max_element(answer.begin(), answer.end()) - answer.begin()] << "\n";
 }
