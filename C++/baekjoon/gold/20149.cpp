@@ -1,74 +1,51 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include<iostream>
+#include<algorithm>
+#include<vector>
+#define x first
+#define y second
 using namespace std;
-class point{
-    public:
-        double x;
-        double y;
-};
-bool check(point a, point b)
-{
-    if(a.x == b.x)
-        return a.y < b.y;
-    return a.x < b.x;
+void query(pair<double, double> a, pair<double, double> b, pair<double, double> c, pair<double, double> d) {
+	double p = (a.x - b.x) * (c.y - d.y) - (a.y - b.y) * (c.x - d.x);
+	if (p == 0) {
+		if (b == c && a <= c) cout << b.x << " " << b.y << "\n";
+		else if (a == d && c <= a) cout << a.x << " " << a.y << "\n";
+	}
+	else {
+		double meet_x = ((a.x * b.y - a.y * b.x) * (c.x - d.x) - (a.x - b.x) * (c.x * d.y - c.y * d.x)) / p;
+		double meet_y = ((a.x * b.y - a.y * b.x) * (c.y - d.y) - (a.y - b.y) * (c.x * d.y - c.y * d.x)) / p;
+		cout << fixed;
+		cout.precision(9);
+		cout << meet_x << " " << meet_y;
+	}
 }
-double ccw(point a, point b, point c)
-{
-    double result = a.x * b.y + b.x * c.y + c.x * a.y - a.y * b.x - b.y * c.x - c.y * a.x;
-    if(result < 0)
-        return -1;
-    else if(result == 0)
-        return 0;
-    else
-        return 1;    
+
+double ccw(pair<double, double> a, pair<double, double> b, pair<double, double> c) {
+	double tmp = a.x * b.y + b.x * c.y + c.x * a.y;
+	tmp -= b.x * a.y + c.x * b.y + a.x * c.y;
+	if (tmp > 0) return 1;
+	else if (tmp == 0) return 0;
+	else if (tmp < 0) return -1;
 }
-double slope(point a, point b)
-{
-    return (b.y - a.y) / (b.x - a.x);
-}
-double intercept(point a, point b)
-{
-    return a.y - (b.y - a.y)/(b.x - a.x) * a.x;
-}
-int main(void)
-{
-    vector<point> L1(2, {0, 0});
-    vector<point> L2(2, {0, 0});
-    bool ans = false;
-    bool ch_one = true;
-    double meet_x, meet_y;
-    cin >> L1[0].x >> L1[0].y >> L1[1].x >> L1[1].y;
-    cin >> L2[0].x >> L2[0].y >> L2[1].x >> L2[1].y;
-    int r1, r2, r3, r4;
-    r1 = ccw(L1[0], L1[1], L2[0]);
-    r2 = ccw(L1[0], L1[1], L2[1]);
-    r3 = ccw(L2[0], L2[1], L1[0]);
-    r4 = ccw(L2[0], L2[1], L1[1]);
-    if(r1 == 0 && r2 == 0)
-    {
-        sort(L1.begin(), L1.end(), check);
-        sort(L2.begin(), L2.end(), check);
-        if(check(L1[0], L2[0]))
-            ans = check(L1[1], L2[0]) ? false : true;
-        else
-            ans = check(L2[1], L1[0]) ? false : true;
-        ch_one = false;
-    }
-    else if(r1 * r2 <= 0)
-    {
-        if(r3 * r4 <= 0)
-            ans = true;
-    }
-    cout << ans << "\n";
-    if(ans && ch_one)
-    {
-        double p = slope(L1[0], L1[1]);
-        double q = slope(L2[0], L2[1]);
-        double l = intercept(L1[0], L1[1]);
-        double n = intercept(L2[0], L2[1]);
-        meet_x = -(l - n)/(p - q);
-        meet_y = p * (meet_x) + l;
-        cout << meet_x << " " << meet_y << "\n";
-    }
+
+int main() {
+	ios_base::sync_with_stdio(0); cin.tie(0);
+	pair<double, double> a, b, c, d;
+	cin >> a.x >> a.y >> b.x >> b.y >> c.x >> c.y >> d.x >> d.y;
+
+	if (ccw(a, b, c) * ccw(a, b, d) == 0 && ccw(c, d, a) * ccw(c, d, b) == 0) {
+		if (a > b) swap(a, b);
+		if (c > d) swap(c, d);
+		if (a <= d && c <= b) {
+			cout << 1 << "\n";
+			query(a, b, c, d);
+		}
+		else cout << 0 << "\n";
+	}
+	else {
+		if (ccw(a, b, c) * ccw(a, b, d) <= 0 && ccw(c, d, a) * ccw(c, d, b) <= 0) {
+			cout << 1 << "\n";
+			query(a, b, c, d);
+		}
+		else cout << 0 << "\n";
+	}
 }
