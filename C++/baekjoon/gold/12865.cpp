@@ -20,16 +20,14 @@ int main(void)
  cin >> n >> k;
  for (int i = 1; i <= n; i++)
   cin >> stk[i].weight >> stk[i].value;
- for (int i = 1; i <= n; i++)
- {
-  for (int j = 1; j <= k; j++)
-  {
-   if (j - stk[i].weight >= 0)
-    dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - stk[i].weight] + stk[i].value);
-   else
-    dp[i][j] = dp[i - 1][j];
-  }
- }
- cout << dp[n][k] << "\n";
- return 0;
+ for (int i = 1; i <= n; i++){
+    for (int j = 1; j <= k; j++){
+      if (j - stk[i].weight >= 0)
+        dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - stk[i].weight] + stk[i].value);
+      else
+        dp[i][j] = dp[i - 1][j];
+      }
+    }
+    cout << dp[n][k] << "\n";
+  return 0;
 }
