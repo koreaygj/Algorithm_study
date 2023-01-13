@@ -3,6 +3,7 @@ public class bj1152{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
+        sc.close();
         String[] answer = input.split(" ");
         if(input.charAt(0) == ' ')
         {
@@ -15,6 +16,5 @@ public class bj1152{
             return;
         }
         System.out.println(answer.length);
-        sc.close();
     }
 }

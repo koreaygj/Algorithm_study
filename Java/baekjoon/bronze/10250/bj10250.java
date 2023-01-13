@@ -8,7 +8,7 @@ public class bj10250{
         {
             int answer = 0;
             int h = sc.nextInt();
-            int w = sc.nextInt();
+            sc.nextInt();
             int n = sc.nextInt();
             answer = n % h * 100;
             if(n % h == 0){

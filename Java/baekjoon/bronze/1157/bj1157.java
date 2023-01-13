@@ -3,6 +3,7 @@ public class bj1157{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
+        sc.close();
         int alphabet[] = new int[26];
         Arrays.fill(alphabet, 0);
         int max = 0;

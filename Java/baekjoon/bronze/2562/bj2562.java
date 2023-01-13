@@ -17,5 +17,6 @@ public class bj2562{
         }
         System.out.println(is_max);
         System.out.println(max_index);
+        sc.close();
     }
 }

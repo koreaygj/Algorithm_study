@@ -7,5 +7,6 @@ public class bj10926{
         String input;
         input = sc.next();
         System.out.printf(input+"??!");
+        sc.close();
     }
 }

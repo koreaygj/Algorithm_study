@@ -1,4 +1,3 @@
-import java.util.*;
 public class bj25083{
     public static void main(String args[])
     {

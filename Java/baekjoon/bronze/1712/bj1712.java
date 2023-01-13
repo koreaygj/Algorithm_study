@@ -5,6 +5,7 @@ public class bj1712{
         int a = sc.nextInt();
         int b = sc.nextInt();
         int c = sc.nextInt();
+        sc.close();
         c -= b;
         if(c == 0)
         {
@@ -18,6 +19,5 @@ public class bj1712{
             return;
         }
         System.out.println(answer);
-        sc.close();
     }
 }

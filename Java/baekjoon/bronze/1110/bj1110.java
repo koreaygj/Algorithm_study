@@ -23,5 +23,6 @@ public class bj1110
                 break;
         }
         System.out.println(answer);
+        sc.close();
     }
 }

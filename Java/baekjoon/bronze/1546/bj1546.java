@@ -18,5 +18,6 @@ public class bj1546{
             avg += arr[i] / is_max * 100;
         }
         System.out.println(avg/n);
+        sc.close();
     }
 }

@@ -13,5 +13,6 @@ public class bj10809{
         }
         for(int i = 0; i < 26 ; i++)
             System.out.print(alphabet[i] + " ");
+        sc.close();
     }
 }

@@ -14,5 +14,6 @@ public class bj15596{
         for(int i = 0; i < n; i++)
             a[i] = sc.nextInt();
         System.out.println(sum(a));
+        sc.close();
     }
 }

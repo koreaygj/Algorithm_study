@@ -1,4 +1,3 @@
-import java.util.*;
 import java.io.*;
 public class bj2869{
     public static void main(String args[]) throws IOException{

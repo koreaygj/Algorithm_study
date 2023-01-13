@@ -3,6 +3,7 @@ public class bj2839{
     public static void main(String args[]){
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
+        sc.close();
         int f_kg = n / 5;
         int t_kg = 0;
         n %= 5;
@@ -24,6 +25,5 @@ public class bj2839{
             return;
         }
         System.out.println(f_kg + t_kg);
-        sc.close();
     }
 }

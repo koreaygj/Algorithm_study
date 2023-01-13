@@ -15,5 +15,6 @@ public class bj3052{
                 answer++;
         }
         System.out.println(answer);
+        sc.close();
     }
 }

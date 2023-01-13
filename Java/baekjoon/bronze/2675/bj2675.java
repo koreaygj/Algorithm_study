@@ -16,5 +16,6 @@ public class bj2675{
             }
             System.out.println(answer);
         }
+        sc.close();
     }
 }

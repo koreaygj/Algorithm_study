@@ -15,5 +15,6 @@ public class bj10818{
                 isMin = arr[i];
         }
         System.out.println(isMin + " " + isMax);
+        sc.close();
     }
 }
