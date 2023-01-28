@@ -5,17 +5,18 @@
 using namespace std;
 class ex{
     public:
-        int n;
-        int arr[100010];
+        int V;
+        int E;
+        int arr[400];
         void example();
         int right_sol();
         int wrong_sol();
 };
 void ex::example(){
     srand(time(NULL));
-    n = rand() % 100000 + 1;
-    for(int i = 1; i <= n; i++){
-        arr[i] = rand() % 1000000001;
+    n = rand() % 100 + 1;
+    for(int i = 1; i <= 3 * E; i++){
+        arr[i] = rand() % 500;
     } 
 }
 //맞는 해설
