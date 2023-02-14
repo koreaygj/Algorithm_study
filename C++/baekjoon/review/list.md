@@ -5,3 +5,4 @@
 -[ ] 1113(bruteforce, simulation): 수영장 만들기
 -[ ] 11505(segment tree, data structure): 구간 곱 구하기
 -[ ] 1725(stack): 히스토그램
+-[ ] 2618(dp): 경찰차
