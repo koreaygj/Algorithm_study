@@ -6,5 +6,6 @@
     -  CodeForces <https://codeforces.com/>
 
     Develop-env
-    -   linux(VScode server in AWS)
+    -   linux(VScode server in GCP)
     -   window11(VScode)
+
