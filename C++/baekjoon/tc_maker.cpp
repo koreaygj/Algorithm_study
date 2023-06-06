@@ -1,69 +1,86 @@
-#include <iostream>
-#include <stack>
-#include <stdlib.h>
-#include <time.h>
+#include<bits/stdc++.h>
 using namespace std;
 class ex{
     public:
         int V;
         int E;
-        int arr[400];
+        double arr[5];
         void example();
-        int right_sol();
-        int wrong_sol();
+        double right_sol();
+        double wrong_sol();
 };
 void ex::example(){
     srand(time(NULL));
-    n = rand() % 100 + 1;
-    for(int i = 1; i <= 3 * E; i++){
-        arr[i] = rand() % 500;
+    for(int i = 0; i < 4; i++){
+        arr[i] = rand() % 1000;
     } 
 }
 //맞는 해설
-int ex::right_sol(){
-    stack<int> s;
-    int ans = 0;
-    s.push(0);
-    for (int i = 1; i <= n + 1; i++){
-        while (!s.empty() && arr[s.top()] > arr[i]){
-	        int check = s.top();
-	        s.pop();
-	        ans = max(ans, arr[check]*(i - s.top() - 1));
-        }
-    s.push(i);
+double ex::right_sol(){
+    cout << fixed;
+    cout.precision(9);
+    double x, y, d, t, ans;
+    x = arr[0];
+    y = arr[1];
+    d = arr[2];
+    t = arr[3];
+    double dist = sqrt(x * x + y * y);
+    if(d < t){
+        //cout << dist << "\n";
+        return dist;
+    }
+    else{
+        ans = dist;
+        int cnt = dist / d;
+        dist -= cnt * d;
+        if(cnt == 0)
+            ans = min(ans, min(t + d - dist, 2.0 * t));
+        else
+            ans = min(ans, min(cnt * t + dist, (cnt + 1.0) * t));
+        //cout << ans << "\n";
+        return ans;
     }
     return ans;
 }
 //틀린 답
-int ex::wrong_sol(){
-    int ans = 0;
-    stack<int> st;
-    st.push(0);
-    cin >> n;
-    for(int i = 1; i <= n; i++){
-        cin >> arr[i];
-    }
-    for(int i = 1; i <= n; i++){
-        while(!st.empty() && arr[st.top()] > arr[i]){
-            int index = st.top();
-            st.pop();
-            ans = max(ans, arr[index] * (i - st.top() - 1));
-        }
-        st.push(i);
-    }
+double ex::wrong_sol(){
+	cout << fixed;
+	cout.precision(9);
+    double X, Y, D, T, ans;
+    X = arr[0];
+    Y = arr[1];
+    D = arr[2];
+    T = arr[3];
+	double d = sqrt(pow(X, 2) + pow(Y, 2));
+	if (D < T) // 점프하는것보다 걷는게 더 빠를 때
+	{
+		//cout << d << '\n';
+        return d;
+	}
+	else
+	{
+		ans = d;
+
+		int jump = d / D; // 점프 횟수
+		d -= jump * D; // 남은 거리
+
+		if (jump == 0) ans = min(ans, min(T + D - d, 2.0 * T));
+		else ans = min(ans, min(jump * T + d, (jump + 1.0) * T));
+		return ans;
+		//cout << ans << '\n';
+	}
     return ans;
 }
 int main(void){
     ex tc;
-    tc.example();
     int cnt = 0;
     while(cnt <= 100){
+        tc.example();
         cnt++;
-        int right = tc.right_sol();
-        int wrong = tc.wrong_sol();
+        double right = tc.right_sol();
+        double wrong = tc.wrong_sol();
         if(right != wrong){
-            cout << tc.n << endl;
-            for(int i = 0; i < tc.n; i++){
+            for(int i = 0; i < 4; i++){
                 cout << tc.arr[i] << " ";
             }
             cout << endl;
