@@ -4,12 +4,12 @@ int main(void){
     cin.tie(NULL);
     cout.tie(NULL);
     ios::sync_with_stdio(false);
-    cout << fixed;
-    cout.precision(9);
     double x, y, d, t, ans;
     cin >> x >> y >> d >> t;
     double dist = sqrt(x * x + y * y);
-    if(d < t){
+    cout << fixed;
+    cout.precision(9);
+    if(dist < t){
         cout << dist << "\n";
     }
     else{
