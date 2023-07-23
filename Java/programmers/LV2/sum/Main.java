@@ -27,7 +27,6 @@ public class Main {
     int sz = sequence.length;
     List<Pair> result = new ArrayList<>();
     while (true) {
-      System.out.println(left + ", " + right);
       if (tmp == k) {
         result.add(new Pair(left, right));
       }
