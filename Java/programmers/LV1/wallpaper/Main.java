@@ -20,7 +20,7 @@ public class Main {
     System.arraycopy(left, 0, answer, 0, 2);
     System.arraycopy(right, 0, answer, 2, 2);
     return answer;
-  }
+}
 
   public static void main(String args[]) {
     Scanner sc = new Scanner(System.in);
