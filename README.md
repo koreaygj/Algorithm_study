@@ -9,3 +9,7 @@
     -   linux(VScode server in GCP)
     -   window11(VScode)
     -   mocOS(VScode)
+
+koreaygj Raking
+
+[![Solved.ac Profile](http://mazassumnida.wtf/api/v2/generate_badge?boj=koreaygj)](https://solved.ac/koreaygj/)
