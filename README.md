@@ -6,8 +6,6 @@
     -  CodeForces <https://codeforces.com/>
 
     Develop-env
-    -   linux(VScode server in GCP)
-    -   window11(VScode)
     -   mocOS(VScode)
 
 koreaygj Raking
