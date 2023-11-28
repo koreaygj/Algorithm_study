@@ -13,7 +13,7 @@ public class Main {
   static int N;
   static int M;
   static int[][] Map = new int[51][51];
-  static int bfs(Point st){
+  static int dfs(Point st){
     System.out.println(st.x + " " + st.y);
     Map[st.x][st.y] = 2;
     int[] nextX = {-1, 0, 1, 0};
@@ -26,13 +26,13 @@ public class Main {
         continue;
       if(Map[next.x][next.y] != 0)
         continue;
-      return bfs(next) + 1;
+      return dfs(next) + 1;
     }
     Point back = new Point(st.x - nextX[st.direction], st.y - nextY[st.direction], st.direction);
     if(back.x < 0 || back.x >= N || back.y < 0 || back.y >= M || Map[back.x][back.y] == 1)
       return 1;
     else
-      return bfs(back);
+      return dfs(back);
   }
   static int solution(int r, int c, int d){
     if(Map[r][c] != 0)
@@ -42,7 +42,7 @@ public class Main {
     else if(d == 1)
       d = 3;
     Point st = new Point(r, c, d);
-    return bfs(st);
+    return dfs(st);
   }
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
