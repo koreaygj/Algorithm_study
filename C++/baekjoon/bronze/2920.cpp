@@ -15,7 +15,7 @@ int main() {
   if (is_inc)
     cout << "ascending\n";
   else if (is_dec)
-    cout << "descendint\n";
+    cout << "descending\n";
   else
     cout << "mixed\n";
 }
